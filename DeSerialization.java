@@ -1,0 +1,24 @@
+import java.io.*;
+
+class Student1 implements Serializable {
+    String name;
+    String regdno;
+    double cgpa;
+}
+
+public class DeSerialization {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Student1 s1 = null; // Changed to Student1
+
+        FileInputStream fileIn = new FileInputStream("C:\\siddiq\\ladaf.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        s1 = (Student1) in.readObject(); // Changed to Student1
+        in.close();
+        fileIn.close();
+
+        System.out.println("Deserialized Student...");
+        System.out.println("Name: " + s1.name);
+        System.out.println("Registration No: " + s1.regdno);
+        System.out.println("CGPA: " + s1.cgpa);
+    }
+}
